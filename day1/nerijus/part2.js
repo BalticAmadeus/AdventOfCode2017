@@ -10,7 +10,7 @@ input = input + input;
 var sum = 0;
 
 for (var i=0; i < length; i++){
-    sum+=parseInt(input.charAt(i)) == parseInt(input.charAt(i + step)) ? parseInt(input.charAt(i)) : 0;
+    sum+=input.charAt(i) == input.charAt(i + step) ? parseInt(input.charAt(i)) : 0;
 }
 
 console.log(sum);
