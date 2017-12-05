@@ -3,7 +3,9 @@ BLOCK-LEVEL ON ERROR UNDO, THROW.
 DEFINE TEMP-TABLE ttInstruction NO-UNDO
     FIELD lineNo AS INTEGER
     FIELD instruction AS INTEGER 
-    INDEX idx lineNo.
+    INDEX idx IS UNIQUE PRIMARY lineNo.
+
+DEFINE VARIABLE inst AS INTEGER EXTENT 3000.
 
 INPUT FROM "input.in".
 
@@ -14,27 +16,22 @@ REPEAT:
     IMPORT UNFORMATTED cLine.
 
     iLineCount = iLineCount + 1.
-
-    CREATE ttInstruction.
-    ttInstruction.lineNo = iLineCount.
-    ttInstruction.instruction = INTEGER(cLine).
-
+    inst[iLineCount] = INTEGER(cLine).
 END.
 
 DEFINE VARIABLE iInstructionNo AS INTEGER NO-UNDO INITIAL 1.
 DEFINE VARIABLE iStepCount AS INTEGER NO-UNDO INITIAL 0.
 
 REPEAT:
-    FIND ttInstruction WHERE
-         ttInstruction.lineNo = iInstructionNo NO-ERROR.
-    IF NOT AVAILABLE ttInstruction
+    IF iInstructionNo > 1070 OR
+       iInstructionNo < 0
     THEN LEAVE.
 
-    iInstructionNo = iInstructionNo + ttInstruction.instruction.
+    iInstructionNo = iInstructionNo + inst[iInstructionNo].
 
-    IF ttInstruction.instruction >= 3
-    THEN ttInstruction.instruction = ttInstruction.instruction - 1.
-    ELSE ttInstruction.instruction = ttInstruction.instruction + 1.
+    IF inst[iInstructionNo] >= 3
+    THEN inst[iInstructionNo] = inst[iInstructionNo] - 1.
+    ELSE inst[iInstructionNo] = inst[iInstructionNo] + 1.
     iStepCount = iStepCount + 1.
 END.
 
