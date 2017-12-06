@@ -24,7 +24,7 @@ public class Program
 			maxIndex = bankList.IndexOf(bankList.Max());
 			redistribute(maxIndex);
 			
-			Console.WriteLine(String.Join(", ", bankList.ToArray()));
+			//Console.WriteLine(String.Join(", ", bankList.ToArray()));
 			if (snapshots.Contains(String.Join(", ", bankList.ToArray())))
 				break;
 			snapshots.Add(String.Join(", ", bankList.ToArray()));
