@@ -19,26 +19,6 @@ var input = fs.readFileSync('input.dat', 'utf-8').split("\n").map(x => {
 var BreakException = {};
 
 input.forEach(x => {
-    switch (x.logic){
-        case ">":
-            regs[x.reg] = regs[x.left] > parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case "<":
-            regs[x.reg] = regs[x.left] < parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case ">=":
-            regs[x.reg] = regs[x.left] >= parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case "==":
-            regs[x.reg] = regs[x.left] == parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case "!=":
-            regs[x.reg] = regs[x.left] != parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case "<=":
-            regs[x.reg] = regs[x.left] <= parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        }
 });
 
 function oper(x){

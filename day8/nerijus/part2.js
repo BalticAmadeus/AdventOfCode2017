@@ -21,26 +21,7 @@ var input = fs.readFileSync('input.dat', 'utf-8').split("\n").map(x => {
 var BreakException = {};
 
 input.forEach(x => {
-    switch (x.logic){
-        case ">":
-            regs[x.reg] = regs[x.left] > parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case "<":
-            regs[x.reg] = regs[x.left] < parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case ">=":
-            regs[x.reg] = regs[x.left] >= parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case "==":
-            regs[x.reg] = regs[x.left] == parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case "!=":
-            regs[x.reg] = regs[x.left] != parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        case "<=":
-            regs[x.reg] = regs[x.left] <= parseInt(x.right) ? oper(x) : regs[x.reg];
-            break;
-        }
+    eval("regs[x.reg] = regs[x.left] " + x.logic + "  parseInt(x.right) ? oper(x) : regs[x.reg]");
 });
 
 function oper(x){
@@ -48,7 +29,6 @@ function oper(x){
     globalMax = ret > globalMax ? ret : globalMax;
     return ret;
 }
-
 
 var max = Math.log(0);
 
