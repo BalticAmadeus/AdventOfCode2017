@@ -39,14 +39,9 @@ input.forEach(x => {
             regs[x.reg] = regs[x.left] <= parseInt(x.right) ? oper(x) : regs[x.reg];
             break;
         }
-
-    if (x.reg == "j"){
-        //throw BreakException;
-    }
 });
 
 function oper(x){
-    var ret = x.oper == 'inc' ? regs[x.reg] + parseInt(x.change) : regs[x.reg] - parseInt(x.change);
     return x.oper == 'inc' ? regs[x.reg] + parseInt(x.change) : regs[x.reg] - parseInt(x.change);
 }
 
