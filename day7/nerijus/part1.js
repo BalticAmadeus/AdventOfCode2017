@@ -1,22 +1,16 @@
 const fs = require("fs");
 
-var nodes = {};
+var children = [];
 
 var input = fs.readFileSync('input.dat', 'utf-8').split("\n").map(x => {
     var top = x.split(' -> ');
-    var children = [];
     if (typeof top[1] !== 'undefined'){
         top[1].split(", ").map(y => {
             children.push(y);
         });
     }
-
-    nodes[x.split(" ")[0]] = {
-        weight: x.match(/\((\d.)\)/)[1],
-        children: children
-    };
-
     return x.split(" ")[0];
-});
+}).filter(x => children.indexOf(x) === -1);
 
-console.log(input);
+
+console.log(input[0]);
