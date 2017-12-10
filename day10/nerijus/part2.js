@@ -5,8 +5,6 @@ var listLength = process.argv[2];
 
 input = [...input, 17, 31, 73, 47, 23];
 
-console.log(input);
-
 var list = [];
 
 for (var i=0; i< listLength; i++){
