@@ -2,7 +2,8 @@
 
 # Taisyklės:
 
-1. Užduočių kodą comitinam į day[diena]/[vardas]/ Direktoriją
-1. Rezutlatą rašom https://docs.google.com/spreadsheets/d/1OwFsHUSqBAGnTEN8oyNRoVmso_Q8dAN0RJClH6b5kw0/edit#gid=0
-1. Kodas turi būti sucomititas iki kitos uždoties pradžios
-1. Nespėjus įgyvendinti uždoties užsiregistruojam alaus lape
+1. Užduočių kodą comitinam į day[diena]/[vardas]/ direktoriją
+1. Kodas turi būti sucomititas į šią repozitoriją kaip įmanoma greičiau to užduoties įveikimo
+1. Jeigu uždoties 1 dalies nespėjam įgyvendinti per 48h po užduoties pasirodymo teks statyti alaus
+
+Taškus ir alų galima sekti čia: http://dev.fobas.lt:1337/#/
