@@ -1,5 +1,6 @@
 const fs = require("fs");
 
+console.time("main");
 
 var firewalls = [];
 var input = fs.readFileSync('input.dat', 'utf-8').split('\n').map(val => {
@@ -19,9 +20,11 @@ for (var k=0; caught; k++){
     for (var i=0; i < firewalls.length; i++){
         if (firewalls[i] && ((i + k) % ((firewalls[i].range - 1) * 2)) == 0){
             caught =true;
+            break;
         }
     }
     delay = k;
 }
 
+console.timeEnd("main");
 console.log(delay);
