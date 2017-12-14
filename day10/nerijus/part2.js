@@ -58,10 +58,10 @@ for (var i=0; i < 16; i++){
 }
 
 function leadingZero(num){
-    return ("0" + num).substring(-2);
+    return ("0" + num).substr(-2);
 }
 
-hash = hash.map(x => x.toString(16)).join("");
+hash = hash.map(x => leadingZero(x.toString(16))).join("");
 
 console.log(hash, hash.length);
 
