@@ -1,0 +1,44 @@
+FUNCTION getBinary RETURNS CHARACTER (nDec AS INT64):
+    DEFINE VARIABLE cBinary AS CHARACTER   NO-UNDO.
+
+    DO WHILE nDec > 0:
+         cBinary  =  STRING(nDec MODULO 2) + cBinary.
+         nDec =  TRUNCATE(nDec / 2, 0).
+    END.
+
+    RETURN cBinary.
+END FUNCTION.
+
+DEFINE VARIABLE nGenA AS INT64 NO-UNDO INITIAL 703.
+DEFINE VARIABLE nGenB AS INT64 NO-UNDO INITIAL 516.
+
+DEFINE VARIABLE cBinA AS CHARACTER NO-UNDO.
+DEFINE VARIABLE cBinB AS CHARACTER NO-UNDO.
+
+DEFINE VARIABLE nCutA AS INTEGER NO-UNDO.
+DEFINE VARIABLE nCutB AS INTEGER NO-UNDO.
+
+DEFINE VARIABLE nCount AS INTEGER INITIAL 0.
+
+DEFINE VARIABLE ix AS INT64 NO-UNDO.
+
+REPEAT ix = 1 TO 40000000:
+    nGenA = nGenA * 16807 MODULO 2147483647.
+    nGenB = nGenB * 48271 MODULO 2147483647.
+    
+    cBinA = getBinary(nGenA).
+    cBinB = getBinary(nGenB).
+    
+    nCutA = LENGTH(cBinA) - 15.
+    nCutB = LENGTH(cBinB) - 15.
+    
+    IF nCutA < 1 THEN nCutA = 1.
+    IF nCutB < 1 THEN nCutB = 1.
+    
+    IF SUBSTRING(cBinA, nCutA) = SUBSTRING(cBinB, nCutB)
+    THEN DO:
+        nCount = nCount + 1.
+    END.
+END.
+
+MESSAGE nCount.
