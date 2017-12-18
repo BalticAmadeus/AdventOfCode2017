@@ -7,7 +7,6 @@ $towers = [];
 $tower = 0;
 $rootTower = 0;
 
-
 foreach ($input as $value){
     $temp = explode(" -> ", $value);
 
