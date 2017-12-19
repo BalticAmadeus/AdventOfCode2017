@@ -27,10 +27,8 @@ while(true){
     }
 
     if (cur === '+'){
-        console.log('dir');
         let temp = dir.splice();
         if (dir[0] === 0){
-            console.log(map[pos[0] + 1][pos[1]]);
             if (pos[0] + 1 < mapWidth && map[pos[0] + 1][pos[1]] !== ' '){
                 dir = [1, 0];
             } else if (pos[0] - 1 >= 0 && map[pos[0] - 1][pos[1]]){
@@ -49,10 +47,6 @@ while(true){
 
     pos = [pos[0] + dir[0], pos[1] + dir[1]];
     steps++;
-
-    if (cur === " "){
-        console.log(cur, pos, dir);
-    }
 }
 
 console.log(steps, path);
