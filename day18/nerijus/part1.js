@@ -57,7 +57,6 @@ var recover = null;
 var sound = null;
 
 main:{
-
     while(i < instructions.length){
         let ins = instructions[i];
         let delta = 1;
