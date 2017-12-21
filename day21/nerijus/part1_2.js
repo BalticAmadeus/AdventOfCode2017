@@ -9,9 +9,7 @@ console.time('main');
 fs.readFileSync('input.dat', 'utf-8').split('\n').map(val => {
     val = val.split(' => ');
 
-    let arr = val[0].split('/').map(row => {
-        return row.split('');
-    });
+    let arr = val[0].split('/').map(row => row.split(''));
 
     for (let i = 0; i < 4; i++){ //rotate 4 times!
         rotate(arr);
@@ -33,15 +31,11 @@ for (var i = 0; i < iterations; i++){
     let newSize = (size + 1) * (length / size);
     let newBlockSize = size + 1;
 
-    let newMatrix = new Array(newSize).fill([]).map(x => new Array(newSize).fill('.'));//
+    let newMatrix = new Array(newSize).fill([]).map(x => new Array(newSize).fill('.'));
 
     for (var j = 0; j < length; j+=size){
         for (var k = 0; k < length; k+=size){
-            let block = serialize(matrix.slice(j, j+size).map(row => row.slice(k, k+size)));
-
-            block = map[block];
-
-            block.split('/').map((row, rowNum) => {
+            map[serialize(matrix.slice(j, j+size).map(row => row.slice(k, k+size)))].split('/').map((row, rowNum) => {
                 row.split('').map((element, colNum) => {
                     newMatrix[(j / size * newBlockSize) + rowNum][(k / size * newBlockSize) + colNum] = element;
                 });
@@ -63,16 +57,11 @@ console.timeEnd('main');
 
 
 function serialize(arr){
-    return arr.map(row => {
-        return row.join('');
-    }).join('/');
+    return arr.map(row => row.join('')).join('/');
 }
 
 function rotate(matrix) {
-    // reverse the rows
     matrix = matrix.reverse();
-
-    // swap the symmetric elements
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < i; j++) {
             var temp = matrix[i][j];
