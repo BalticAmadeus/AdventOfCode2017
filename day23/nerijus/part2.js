@@ -51,6 +51,7 @@ while(i < instructions.length){
     steps++;
 }
 
+console.log(regs);
 console.log(steps, answer);
 
 function getVal(reg){
