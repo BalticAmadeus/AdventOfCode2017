@@ -58,7 +58,7 @@ public class advent242
             else
                 subBridgeWeight = connectBridge(depth + 1, componentWeight, currentComp.id, currentComp.leftConnector, out currentMaxDepth);
 
-            if (currentMaxDepth >= maxDepth)
+            if (currentMaxDepth >= maxDepth && subBridgeWeight > maxWeight)
             {
                 maxDepth = currentMaxDepth;
                 maxWeight = subBridgeWeight;
