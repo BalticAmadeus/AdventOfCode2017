@@ -18,7 +18,6 @@ const isPrime = num => {
 r.b = (r.b * 100) + 100000
 r.c = r.b + 17000;
 for (let i = r.b; i <= r.c; i += 17) { //from r.b to r.c
-    console.log(i);
     if (!isPrime(i)){
         r.h++;
     }
